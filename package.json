@@ -1,0 +1,22 @@
+{
+  "name": "practica-soap-express",
+  "version": "1.0.0",
+  "description": "Servicios web SOAP con Express y WSDL en Node.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "soap": "^1.1.4"
+  },
+  "keywords": [
+    "soap",
+    "wsdl",
+    "express",
+    "nodejs"
+  ],
+  "author": "Bruno",
+  "license": "MIT"
+}
