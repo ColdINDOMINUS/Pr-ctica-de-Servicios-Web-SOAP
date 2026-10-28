@@ -11,3 +11,20 @@ Aplicación desarrollada en Node.js y Express que implementa dos servicios web b
 2. Instala las dependencias ejecutando:
    ```bash
    npm install
+
+### Evidencias de Pruebas
+
+#### 1. Operación CelsiusAFahrenheit
+![Prueba CelsiusAFahrenheit](evidencias/celsius-fahrenheit.png)
+
+#### 2. Operación KilometrosAMillas
+![Prueba KilometrosAMillas](evidencias/kilometros-millas.png)
+
+#### 3. Operación AreaRectangulo
+![Prueba AreaRectangulo](evidencias/area-rectangulo.png)
+
+#### 4. Operación PerimetroRectangulo
+![Prueba PerimetroRectangulo](evidencias/perimetro-rectangulo.png)
+
+#### 5. Registro del Middleware en Consola
+![Logs Middleware](evidencias/middleware-logger.png)
