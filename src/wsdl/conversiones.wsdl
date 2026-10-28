@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ConversionesService"
+             targetNamespace="http://localhost:3000/soap/conversiones"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://localhost:3000/soap/conversiones"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+  <types>
+    <xsd:schema targetNamespace="http://localhost:3000/soap/conversiones">
+      <!-- Celsius a Fahrenheit -->
+      <xsd:element name="CelsiusAFahrenheitRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="celsius" type="xsd:decimal"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CelsiusAFahrenheitResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="fahrenheit" type="xsd:decimal"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <!-- Kilómetros a Millas -->
+      <xsd:element name="KilometrosAMillasRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="kilometros" type="xsd:decimal"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="KilometrosAMillasResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="millas" type="xsd:decimal"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+
+  <!-- Mensajes -->
+  <message name="CelsiusAFahrenheitInput">
+    <part name="parameters" element="tns:CelsiusAFahrenheitRequest"/>
+  </message>
+  <message name="CelsiusAFahrenheitOutput">
+    <part name="parameters" element="tns:CelsiusAFahrenheitResponse"/>
+  </message>
+
+  <message name="KilometrosAMillasInput">
+    <part name="parameters" element="tns:KilometrosAMillasRequest"/>
+  </message>
+  <message name="KilometrosAMillasOutput">
+    <part name="parameters" element="tns:KilometrosAMillasResponse"/>
+  </message>
+
+  <!-- PortType -->
+  <portType name="ConversionesPortType">
+    <operation name="CelsiusAFahrenheit">
+      <input message="tns:CelsiusAFahrenheitInput"/>
+      <output message="tns:CelsiusAFahrenheitOutput"/>
+    </operation>
+    <operation name="KilometrosAMillas">
+      <input message="tns:KilometrosAMillasInput"/>
+      <output message="tns:KilometrosAMillasOutput"/>
+    </operation>
+  </portType>
+
+  <!-- Binding -->
+  <binding name="ConversionesBinding" type="tns:ConversionesPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="CelsiusAFahrenheit">
+      <soap:operation soapAction="http://localhost:3000/soap/conversiones/CelsiusAFahrenheit"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+    <operation name="KilometrosAMillas">
+      <soap:operation soapAction="http://localhost:3000/soap/conversiones/KilometrosAMillas"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+  </binding>
+
+  <!-- Service -->
+  <service name="ConversionesService">
+    <port name="ConversionesPort" binding="tns:ConversionesBinding">
+      <soap:address location="http://localhost:3000/soap/conversiones"/>
+    </port>
+  </service>
+</definitions>
